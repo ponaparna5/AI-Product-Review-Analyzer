@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>AI Product Review Analyzer | ReviewRadar</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Sora:wght@600;700;800&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- NAVIGATION -->
+    <header class="navbar">
+
+        <a class="logo" href="#home">
+            <i class="dot"></i>
+            Review<b>Radar</b>
+        </a>
+
+        <nav>
+            <a href="#home">Home</a>
+            <a href="#analyzer">Analyzer</a>
+            <a href="#insights">Insights</a>
+            <a href="#about">About</a>
+        </nav>
+
+    </header>
+
+
+    <!-- HERO -->
+    <section class="hero" id="home">
+
+        <div class="hero-text">
+
+            <div class="eyebrow">
+                AI-POWERED PRODUCT ANALYSIS
+            </div>
+
+            <h1>
+                Know how customers feel
+                <span>before they tell you.</span>
+            </h1>
+
+            <p>
+                Analyze product reviews using machine learning and
+                instantly understand customer sentiment, confidence,
+                rating and key feedback.
+            </p>
+
+            <div class="hero-actions">
+
+                <a href="#analyzer" class="hero-button">
+                    Analyze a review
+                </a>
+
+                <a href="#insights" class="secondary-button">
+                    View insights
+                </a>
+
+            </div>
+
+        </div>
+
+
+        <div class="scope">
+
+            <div class="scope-header">
+                <span>LIVE SENTIMENT</span>
+                <span class="status">
+                    <i></i> AI READY
+                </span>
+            </div>
+
+            <p class="scope-quote">
+                "Battery lasts two days and the screen is gorgeous."
+            </p>
+
+            <div class="spectrum">
+                <span class="needle" style="--at:82"></span>
+            </div>
+
+            <div class="spectrum-scale">
+                <span>Negative</span>
+                <span>Neutral</span>
+                <span>Positive</span>
+            </div>
+
+            <div class="demo-result">
+
+                <div>
+                    <small>Predicted sentiment</small>
+                    <strong>Positive</strong>
+                </div>
+
+                <div class="demo-confidence">
+                    <small>Confidence</small>
+                    <strong>94%</strong>
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ANALYZER -->
+    <section class="analyzer-section" id="analyzer">
+
+        <div class="section-heading">
+
+            <span class="section-tag">
+                REVIEW ANALYZER
+            </span>
+
+            <h2>
+                Analyze customer feedback
+            </h2>
+
+            <p>
+                Paste a product review or choose one of the
+                sample reviews below.
+            </p>
+
+        </div>
+
+
+        <div class="analyzer-card">
+
+            <label for="reviewInput">
+                Customer review
+            </label>
+
+            <div class="samples">
+
+                <button type="button"
+                        class="chip"
+                        data-text="The product quality is excellent and I am very satisfied. Fast delivery and great value for the price.">
+                    Happy customer
+                </button>
+
+                <button type="button"
+                        class="chip"
+                        data-text="Terrible experience. The screen cracked in a week, the battery is awful and support ignored my emails.">
+                    Unhappy customer
+                </button>
+
+                <button type="button"
+                        class="chip"
+                        data-text="The camera is great but the battery is disappointing. Delivery was fine.">
+                    Mixed review
+                </button>
+
+            </div>
+
+
+            <textarea
+                id="reviewInput"
+                placeholder="Example: The product quality is excellent and I am very satisfied..."
+                maxlength="2000"
+            ></textarea>
+
+
+            <div class="input-footer">
+
+                <span id="characterCount">
+                    0 characters
+                </span>
+
+                <span id="formHint" role="status"></span>
+
+                <button id="analyzeButton">
+                    Analyze review
+                </button>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- RESULTS -->
+    <section class="results-section" id="results">
+
+        <div class="section-heading">
+
+            <span class="section-tag">
+                ANALYSIS RESULT
+            </span>
+
+            <h2>
+                Review insights
+            </h2>
+
+            <p>
+                Your review analysis will appear here.
+            </p>
+
+        </div>
+
+
+        <!-- SENTIMENT -->
+        <div class="verdict" id="verdictCard" data-tone="none">
+
+            <div class="verdict-top">
+
+                <div>
+
+                    <p class="label">
+                        SENTIMENT
+                    </p>
+
+                    <h3 id="sentimentResult">
+                        —
+                    </h3>
+
+                </div>
+
+
+                <div class="spectrum big">
+
+                    <span
+                        class="needle"
+                        id="needle"
+                        style="--at:50">
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <div class="spectrum-scale">
+                <span>Negative</span>
+                <span>Neutral</span>
+                <span>Positive</span>
+            </div>
+
+        </div>
+
+
+        <!-- STATISTICS -->
+        <div class="stats">
+
+            <div class="stat">
+
+                <p class="label">
+                    CONFIDENCE
+                </p>
+
+                <strong id="confidenceResult">
+                    —
+                </strong>
+
+                <div class="bar">
+                    <span
+                        id="confidenceBar"
+                        style="width:0%">
+                    </span>
+                </div>
+
+            </div>
+
+
+            <div class="stat">
+
+                <p class="label">
+                    RATING
+                </p>
+
+                <strong id="ratingResult">
+                    —
+                </strong>
+
+            </div>
+
+
+            <div class="stat">
+
+                <p class="label">
+                    CATEGORY
+                </p>
+
+                <strong id="categoryResult">
+                    —
+                </strong>
+
+            </div>
+
+        </div>
+
+
+        <!-- REVIEW + SUMMARY -->
+        <div class="read-grid">
+
+            <div class="panel">
+
+                <h3>
+                    Marked-up review
+                </h3>
+
+                <p class="marked" id="markedReview">
+                    Your review will appear here with positive
+                    and negative words highlighted.
+                </p>
+
+            </div>
+
+
+            <div class="panel">
+
+                <h3>
+                    AI summary
+                </h3>
+
+                <p id="summaryResult">
+                    Your AI-generated review summary will appear
+                    here after analysis.
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- INSIGHTS -->
+    <section class="insights-section" id="insights">
+
+        <div class="section-heading">
+
+            <span class="section-tag">
+                DATA INSIGHTS
+            </span>
+
+            <h2>
+                Customer sentiment overview
+            </h2>
+
+            <p>
+                Sentiment distribution from the processed review dataset.
+            </p>
+
+        </div>
+
+
+        <div class="split-bar">
+
+            <span class="pos" style="width:74%">
+                74%
+            </span>
+
+            <span class="neu" style="width:8%">
+                8%
+            </span>
+
+            <span class="neg" style="width:18%">
+                18%
+            </span>
+
+        </div>
+
+
+        <div class="insight-grid">
+
+            <div class="insight-card">
+
+                <i class="pos"></i>
+
+                <h3>
+                    Positive reviews
+                </h3>
+
+                <strong>
+                    35,874
+                </strong>
+
+                <p>
+                    Customers expressing positive opinions.
+                </p>
+
+            </div>
+
+
+            <div class="insight-card">
+
+                <i class="neu"></i>
+
+                <h3>
+                    Neutral reviews
+                </h3>
+
+                <strong>
+                    3,776
+                </strong>
+
+                <p>
+                    Customers with neutral feedback.
+                </p>
+
+            </div>
+
+
+            <div class="insight-card">
+
+                <i class="neg"></i>
+
+                <h3>
+                    Negative reviews
+                </h3>
+
+                <strong>
+                    8,596
+                </strong>
+
+                <p>
+                    Customers expressing negative opinions.
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ABOUT -->
+    <section class="about-section" id="about">
+
+        <div class="about-content">
+
+            <span class="section-tag">
+                ABOUT THE PROJECT
+            </span>
+
+            <h2>
+                AI Product Review Analyzer
+            </h2>
+
+            <p>
+                This application uses machine learning to analyze
+                customer product reviews and classify them as
+                Positive, Neutral, or Negative.
+            </p>
+
+            <p>
+                The project uses text processing and a trained
+                machine-learning model to transform customer
+                feedback into useful product insights.
+            </p>
+
+
+            <div class="tech-stack">
+
+                <span>Python</span>
+                <span>Machine Learning</span>
+                <span>TF-IDF</span>
+                <span>Logistic Regression</span>
+                <span>HTML</span>
+                <span>CSS</span>
+                <span>JavaScript</span>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- FOOTER -->
+    <footer>
+
+        <div>
+            <strong>ReviewRadar</strong>
+            <p>AI Product Review Analyzer</p>
+        </div>
+
+        <div>
+            <p>Built with Python, Machine Learning & Web Technologies</p>
+            <p>© 2026 AI Product Review Analyzer</p>
+        </div>
+
+    </footer>
+
+
+    <script src="script.js"></script>
+
+</body>
+</html>
